@@ -8,7 +8,7 @@
 
  - CountDown.openTimeCountBySeconds()
 
-    根据要计时的秒数打开一个显示时间的倒计时
+    根据要计时的秒数打开一个显示剩余时间的倒计时
     
     ***参数***：
     
@@ -22,10 +22,12 @@
     
     EndFunc: 倒计时结束时执行的方法
     
+    ps:以上均为可选参数
+    
     ***示例***
     
         CountDown.openTimeCountBySeconds({
-            Ele: h1,
+            Ele: document.getElementById('h1'),
             CountDownSeconds: 3600,
             Sign: 'flypie',
             Divider: ':',
@@ -33,3 +35,98 @@
                 console.log('end');
             }
         });
+
+ - CountDown.openTimeCountByStartAndEndDate()
+
+    根据计时开始和结束时间打开一个显示剩余时间的倒计时
+    
+    ***参数***：
+    
+    Ele: 放置倒计时的元素
+    
+    StartDate: 倒计时开始时间 (date类型)
+    
+    EndDate: 倒计时结束时间 (date类型)
+    
+    Sign: 用于给倒计时设置标记 （可以给多个倒计时设置同一个标记）
+    
+    Divider: 分割时分秒的分割符
+    
+    EndFunc: 倒计时结束时执行的方法
+    
+    ps:除StartDate,EndDate外均为可选参数
+    
+    ***示例***
+    
+        var startDate = new Date();
+        var endDate = new Date();
+        endDate.setDate(endDate.getDate()+1);
+        
+        CountDown.openTimeCountByStartAndEndDate({
+            Ele: document.getElementById('h1'),
+            StartDate: startDate,
+            EndDate: endDate,
+            Sign: 'flypie',
+            Divider: ':',
+            EndFunc: function () {
+                console.log('end');
+            }
+        });
+        
+ - CountDown.openTimeCountByStartAndEndDate()
+
+    根据计时开始和结束时间打开一个显示剩余天数加时间的倒计时
+    
+    ***参数***：
+    
+    Ele: 放置倒计时的元素
+    
+    StartDate: 倒计时开始时间 (date类型)
+    
+    EndDate: 倒计时结束时间 (date类型)
+    
+    Sign: 用于给倒计时设置标记 （可以给多个倒计时设置同一个标记）
+    
+    Divider: 分割时分秒的分割符
+    
+    DateDivider: 天数和时间之间的分隔符
+    
+    EndFunc: 倒计时结束时执行的方法
+    
+    ps:除StartDate,EndDate外均为可选参数
+    
+    ***示例***
+    
+        var startDate = new Date();
+        var endDate = new Date();
+        endDate.setDate(endDate.getDate()+10);
+        
+        CountDown.openDateAndTimeCountByStartAndEndDate({
+            Ele: document.getElementById('h1'),
+            StartDate: startDate,
+            EndDate: endDate,
+            Sign: 'flypie',
+            Divider: ':',
+            DateDivider: '天 ',
+            EndFunc: function () {
+                console.log('end');
+            }
+        });
+        
+ - CountDown.stopBySign()
+
+    根据标记零时暂停一个倒计时
+    
+        CountDown.stopBySign('flypie');
+    
+ - CountDown.resumeBySign()
+
+    根据标记恢复一个被零时暂停的倒计时
+    
+        CountDown.resumeBySign('flypie');
+    
+ - CountDown.closeBySign()
+
+    根据标记永久性地关闭一个倒计时
+    
+        CountDown.closeBySign('flypie');

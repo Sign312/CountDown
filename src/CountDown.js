@@ -40,10 +40,7 @@ CountDown.openTimeCountBySeconds = function (params) {
 
     var tempdate = new Date(endDate.getTime() - startDate.getTime());
 
-    var interval;
-    var intervalUnit = new IntervalUnit(interval, Sign, false);
-
-    interval = setInterval(function () {
+    var interval = setInterval(function () {
         if (intervalUnit.isStop) {
             return;
         }
@@ -59,6 +56,7 @@ CountDown.openTimeCountBySeconds = function (params) {
         Ele.innerText = CountDown.makeTimeText(tempdate, Divider);
     }, 1000);
 
+    var intervalUnit = new IntervalUnit(interval, Sign, false);
     CountDown.M_IntervalUnits.push(intervalUnit);
 };
 
@@ -95,10 +93,7 @@ CountDown.openDateAndTimeCountByStartAndEndDate = function (params) {
 
     var tempdate = new Date(endDate.getTime() - startDate.getTime());
 
-    var interval;
-    var intervalUnit = new IntervalUnit(interval, Sign, false);
-
-    interval = setInterval(function () {
+    var interval = setInterval(function () {
         if (intervalUnit.isStop) {
             return;
         }
@@ -115,6 +110,7 @@ CountDown.openDateAndTimeCountByStartAndEndDate = function (params) {
         Ele.innerText = CountDown.makeDateAndTimeText(tempdate, Divider, dateDivider);
     }, 1000);
 
+    var intervalUnit = new IntervalUnit(interval, Sign, false);
     CountDown.M_IntervalUnits.push(intervalUnit);
 };
 
@@ -146,10 +142,7 @@ CountDown.openTimeCountByStartAndEndDate = function (params) {
     }
     var tempdate = new Date(endDate.getTime() - startDate.getTime());
 
-    var interval;
-    var intervalUnit = new IntervalUnit(interval, Sign, false);
-
-    interval = setInterval(function () {
+    var interval = setInterval(function () {
         if (intervalUnit.isStop) {
             return;
         }
@@ -166,6 +159,7 @@ CountDown.openTimeCountByStartAndEndDate = function (params) {
         Ele.innerText = CountDown.makeTimeText(tempdate, Divider);
     }, 1000);
 
+    var intervalUnit = new IntervalUnit(interval, Sign, false);
     CountDown.M_IntervalUnits.push(intervalUnit);
 
 };
@@ -222,9 +216,6 @@ CountDown.makeDateAndTimeText = function (tempdate, Divider, dateDivider) {
     var seconds = tempdate.getSeconds();
 
     var timetext = '';
-    if (date < 10) {
-        timetext = timetext + '0';
-    }
     timetext = timetext + date + dateDivider;
     if (hour < 10) {
         timetext = timetext + '0';
