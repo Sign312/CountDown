@@ -4,7 +4,7 @@
 
 ### 一个用来实现简单页面倒计时的轻量级工具
 
-#### API
+### API
 
  - CountDown.openTimeCountBySeconds()
 
