@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #button {
+            margin: 20px;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+
+        #button2 {
+            margin: 20px;
+            width: 100px;
+            height: 100px;
+            background: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<h1 id="h1"></h1>
+<div id="button">暂停</div>
+<div id="button2">开始</div>
+</body>
+<script src="src/CountDown.js"></script>
+<script>
+    var h1 = document.getElementById('h1');
+
+    CountDown.openTimeCountBySeconds({
+        Ele: h1,
+        CountDownSeconds: 3600,
+        Sign: 'flypie',
+        Divider: ':',
+        EndFunc: function () {
+            console.log('end');
+        }
+    });
+    var startDate = new Date();
+    var endDate = new Date();
+    endDate.setMonth(endDate.getMonth() + 12);
+
+    //    CountDown.openDateAndTimeCountByStartAndEndDate({
+    //        Ele: h1,
+    //        StartDate: startDate,
+    //        EndDate: endDate,
+    //        Sign: 'flypie',
+    //    });
+
+    //    CountDown.openTimeCountByStartAndEndDate({
+    //        Ele: h1,
+    //        StartDate: startDate,
+    //        EndDate: endDate,
+    //        Sign: 'flypie',
+    //    });
+
+    var e_button = document.getElementById('button');
+    e_button.addEventListener('click', function () {
+        CountDown.stopBySign('flypie');
+    });
+
+    var e_button2 = document.getElementById('button2');
+    e_button2.addEventListener('click', function () {
+        CountDown.resumeBySign('flypie');
+    });
+</script>
+</html>
