@@ -32,44 +32,50 @@
 <div id="button2">恢复</div>
 <div id="button3">结束</div>
 </body>
-<script src="src/CountDown.js"></script>
+<script src="dist/CountDown.min.js"></script>
 <script>
-//    CountDown.openTimeCountBySeconds({
-//        Ele: document.getElementById('h1'),
-//        CountDownSeconds: 3600,
-//        Sign: 'flypie',
-//        Divider: ':',
-//        EndFunc: function () {
-//            console.log('end');
-//        }
-//    });
+    //    CountDown.openTimeCountBySeconds({
+    //        Ele: document.getElementById('h1'),
+    //        CountDownSeconds: 3600,
+    //        Sign: 'flypie',
+    //        Divider: ':',
+    //        EndFunc: function () {
+    //            console.log('end');
+    //        }
+    //    });
 
     var startDate = new Date();
     var endDate = new Date();
-    endDate.setDate(endDate.getDate()+10);
+    endDate.setSeconds(startDate.getSeconds() + 20);
 
-        CountDown.openDateAndTimeCountByStartAndEndDate({
-            Ele: document.getElementById('h1'),
-            StartDate: startDate,
-            EndDate: endDate,
-            Sign: 'flypie',
-            Divider: ':',
-            DateDivider: '天 ',
-            EndFunc: function () {
-                console.log('end');
+    //    CountDown.openDateAndTimeCountByStartAndEndDate({
+    //        Ele: document.getElementById('h1'),
+    //        StartDate: startDate,
+    //        EndDate: endDate,
+    //        Sign: 'flypie',
+    //        Divider: ':',
+    //        DateDivider: '天 ',
+    //        EndFunc: function () {
+    //            console.log('end');
+    //        }
+    //    });
+
+    CountDown.openTimeCountByStartAndEndDate({
+        Ele: document.getElementById('h1'),
+        StartDate: startDate,
+        EndDate: endDate,
+        Sign: 'flypie',
+        Divider: ':',
+        EndFunc: function () {
+            console.log('end');
+        },
+        additionToggle: {
+            seconds: 10,
+            callback: function () {
+                alert('soon');
             }
-        });
-
-//        CountDown.openTimeCountByStartAndEndDate({
-//            Ele: document.getElementById('h1'),
-//            StartDate: startDate,
-//            EndDate: endDate,
-//            Sign: 'flypie',
-//            Divider: ':',
-//            EndFunc: function () {
-//                console.log('end');
-//            }
-//        });
+        }
+    });
 
     var e_button = document.getElementById('button');
     e_button.addEventListener('click', function () {

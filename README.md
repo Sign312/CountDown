@@ -4,6 +4,8 @@
 
 ### 一个用来实现简单页面倒计时的轻量级工具
 
+#### 2.0版本升级，加入倒计时还剩指定时间执行的回调方法
+
 ### API
 
  - CountDown.openTimeCountBySeconds()
@@ -93,6 +95,8 @@
     
     EndFunc: 倒计时结束时执行的方法
     
+    additionToggle: 当倒计时还剩指定时间时执行一个回调函数 (seconds:还剩多少秒时执行,callback:回调函数)
+    
     ps:除StartDate,EndDate外均为可选参数
     
     ***示例***
@@ -101,15 +105,20 @@
         var endDate = new Date();
         endDate.setDate(endDate.getDate()+10);
         
-        CountDown.openDateAndTimeCountByStartAndEndDate({
+        CountDown.openTimeCountByStartAndEndDate({
             Ele: document.getElementById('h1'),
             StartDate: startDate,
             EndDate: endDate,
             Sign: 'flypie',
             Divider: ':',
-            DateDivider: '天 ',
             EndFunc: function () {
                 console.log('end');
+            },
+            additionToggle: {
+                seconds: 10,
+                callback: function () {
+                    alert('soon');
+                }
             }
         });
         

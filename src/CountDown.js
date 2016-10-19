@@ -52,7 +52,7 @@ CountDown.openTimeCountBySeconds = function (params) {
 
         startDate.setSeconds(startDate.getSeconds() + 1);
 
-        tempdate.setTime(endDate.getTime() - startDate.getTime())
+        tempdate.setTime(endDate.getTime() - startDate.getTime());
         Ele.innerText = CountDown.makeTimeText(tempdate, Divider);
     }, 1000);
 
@@ -105,7 +105,7 @@ CountDown.openDateAndTimeCountByStartAndEndDate = function (params) {
 
         startDate.setSeconds(startDate.getSeconds() + 1);
 
-        tempdate.setTime(endDate.getTime() - startDate.getTime())
+        tempdate.setTime(endDate.getTime() - startDate.getTime());
 
         Ele.innerText = CountDown.makeDateAndTimeText(tempdate, Divider, dateDivider);
     }, 1000);
@@ -140,6 +140,13 @@ CountDown.openTimeCountByStartAndEndDate = function (params) {
     if (params.EndDate) {
         endDate = params.EndDate;
     }
+    var additionToggle = undefined;
+    if (params.additionToggle) {
+        additionToggle = {};
+        additionToggle.seconds = params.additionToggle.seconds;
+        additionToggle.callback = params.additionToggle.callback;
+    }
+
     var tempdate = new Date(endDate.getTime() - startDate.getTime());
 
     var interval = setInterval(function () {
@@ -155,6 +162,13 @@ CountDown.openTimeCountByStartAndEndDate = function (params) {
         startDate.setSeconds(startDate.getSeconds() + 1);
 
         tempdate.setTime(endDate.getTime() - startDate.getTime());
+
+        if (additionToggle && !this.alreadyToggle) {
+            if (tempdate.getTime() / 1000 < additionToggle.seconds) {
+                additionToggle.callback();
+                this.alreadyToggle = true;
+            }
+        }
 
         Ele.innerText = CountDown.makeTimeText(tempdate, Divider);
     }, 1000);
