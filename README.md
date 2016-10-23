@@ -56,14 +56,12 @@
     
     EndFunc: 倒计时结束时执行的方法
     
+    additionToggle: 当倒计时还剩指定时间时执行一个回调函数 (seconds:还剩多少秒时执行,callback:回调函数)
+    
     ps:除StartDate,EndDate外均为可选参数
     
     ***示例***
     
-        var startDate = new Date();
-        var endDate = new Date();
-        endDate.setDate(endDate.getDate()+1);
-        
         CountDown.openTimeCountByStartAndEndDate({
             Ele: document.getElementById('h1'),
             StartDate: startDate,
@@ -72,6 +70,12 @@
             Divider: ':',
             EndFunc: function () {
                 console.log('end');
+            },
+            additionToggle: {
+                seconds: 10,
+                callback: function () {
+                    alert('soon');
+                }
             }
         });
         
@@ -95,30 +99,19 @@
     
     EndFunc: 倒计时结束时执行的方法
     
-    additionToggle: 当倒计时还剩指定时间时执行一个回调函数 (seconds:还剩多少秒时执行,callback:回调函数)
-    
     ps:除StartDate,EndDate外均为可选参数
     
     ***示例***
     
-        var startDate = new Date();
-        var endDate = new Date();
-        endDate.setDate(endDate.getDate()+10);
-        
-        CountDown.openTimeCountByStartAndEndDate({
+        CountDown.openDateAndTimeCountByStartAndEndDate({
             Ele: document.getElementById('h1'),
             StartDate: startDate,
             EndDate: endDate,
             Sign: 'flypie',
             Divider: ':',
+            DateDivider: '天 ',
             EndFunc: function () {
                 console.log('end');
-            },
-            additionToggle: {
-                seconds: 10,
-                callback: function () {
-                    alert('soon');
-                }
             }
         });
         
