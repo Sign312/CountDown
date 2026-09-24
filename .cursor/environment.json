@@ -1,0 +1,17 @@
+{
+  "name": "CountDown.js",
+  "install": "echo 'CountDown.js is a dependency-free vanilla JavaScript library with a prebuilt dist/CountDown.min.js; no dependency installation or build step is required.'",
+  "terminals": [
+    {
+      "name": "static-server",
+      "command": "python3 -m http.server 8000",
+      "description": "Serves the repository over HTTP so the demo page is reachable at http://localhost:8000/test.html"
+    }
+  ],
+  "ports": [
+    {
+      "name": "static server",
+      "port": 8000
+    }
+  ]
+}
